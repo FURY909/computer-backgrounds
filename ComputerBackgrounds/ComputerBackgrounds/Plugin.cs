@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static Photon.Pun.UtilityScripts.TabViewManager;
 using TMPro;
+using System.IO;
+using Unity.IO.LowLevel.Unsafe;
 
 namespace Computerbackgrounds
 {
@@ -16,7 +18,7 @@ namespace Computerbackgrounds
         public GameObject pcmeshplane;
         public GameObject tab;
         public Material tabmat;
-
+        string filespath = Path.Combine(Path.GetDirectoryName(typeof(Plugin).Assembly.Location), "ComputerBackground");
         void Start()
         {
             GorillaTagger.OnPlayerSpawned(OnGameInitialized);
@@ -42,14 +44,19 @@ namespace Computerbackgrounds
         void OnGameInitialized()
         {
             Debug.Log("is initialized");
+            if (!Directory.Exists(filespath))
+            {
+                Directory.CreateDirectory(filespath);
+
+            }
             setup();
         }
         public void setup()
         {
             pcmeshplane = GameObject.CreatePrimitive(PrimitiveType.Plane);
             pcmeshplane.transform.position = new Vector3(-65.4623f, 11.999f, -80.0045f);
-            pcmeshplane.transform.rotation = Quaternion.Euler(84.7581f, 200.596f, 0.2129f);
-            pcmeshplane.transform.localScale = new Vector3(0.069f, 0.206f, 0.046f);
+            pcmeshplane.transform.rotation = Quaternion.Euler(84.7585f, 200.586f, 0.2129f);
+            pcmeshplane.transform.localScale = new Vector3(0.069f, 0.206f, 0.036f);
             pcmeshplane.AddComponent<background>();
             var volume = new Material(Shader.Find("GorillaTag/UberShader"));
             var VolUp = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -63,8 +70,13 @@ namespace Computerbackgrounds
             VolDown.transform.localScale = new Vector3(0.069f, 0.076f, 0.046f);
             VolDown.name = "voldown";
             VolDown.GetComponent<MeshRenderer>().material = volume;
+            VolDown.GetComponent<BoxCollider>().isTrigger = true;
             VolUp.GetComponent<MeshRenderer>().material = volume;
-
+            VolUp.GetComponent<BoxCollider>().isTrigger = true;
+            VolDown.layer = 18;
+            VolUp.layer = 18;
+            VolDown.AddComponent<VolumeController>();
+            VolUp.AddComponent<VolumeController>();
         }
 
 

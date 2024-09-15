@@ -16,6 +16,7 @@ namespace Computerbackgrounds
         public string VideoPath;
         public bool Video;
         public bool SetBackground;
+        public static float volume = 1;
         public static List<string> Backgrounds = new List<string>();
         public void Start()
         {
