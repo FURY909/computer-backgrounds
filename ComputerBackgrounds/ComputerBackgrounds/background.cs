@@ -12,7 +12,7 @@ namespace Computerbackgrounds
         public Material Background;
         public Material NULL;
         public GameObject gorilla;
-        public VideoPlayer VP;
+        public static VideoPlayer VP;
         public string VideoPath;
         public bool Video;
         public bool SetBackground;
