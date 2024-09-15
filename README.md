@@ -8,3 +8,4 @@ make a folder called "ComputerBackground" and place PNG only files then boot up 
 
 ![image](https://github.com/FURY909/computer-backgrounds/assets/86896895/e28eacc5-aa05-4a1d-80e9-fecac134ffbf)
 
+thanks to me and angel!
