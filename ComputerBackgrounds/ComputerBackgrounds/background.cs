@@ -14,7 +14,7 @@ namespace Computerbackgrounds
         public GameObject gorilla;
         public static VideoPlayer VP;
         public string VideoPath;
-        public bool Video;
+        public static bool Video;
         public bool SetBackground;
         public static float volume = 1;
         public static List<string> Backgrounds = new List<string>();

@@ -58,25 +58,29 @@ namespace Computerbackgrounds
             pcmeshplane.transform.rotation = Quaternion.Euler(84.7585f, 200.586f, 0.2129f);
             pcmeshplane.transform.localScale = new Vector3(0.069f, 0.206f, 0.036f);
             pcmeshplane.AddComponent<background>();
-            var volume = new Material(Shader.Find("GorillaTag/UberShader"));
-            var VolUp = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            VolUp.transform.position = new Vector3(-65.1123f, 12.169f, - 80.0745f);
-            VolUp.transform.rotation = Quaternion.Euler(84.7581f, 200.596f, 0.2129f);
-            VolUp.transform.localScale = new Vector3(0.069f, 0.076f, 0.046f);
-            VolUp.name = "volup";
-            var VolDown = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            VolDown.transform.position = new Vector3(-65.1223f, 11.809f, - 80.0945f);
-            VolDown.transform.rotation = Quaternion.Euler(84.7581f, 200.596f, 0.2129f);
-            VolDown.transform.localScale = new Vector3(0.069f, 0.076f, 0.046f);
-            VolDown.name = "voldown";
-            VolDown.GetComponent<MeshRenderer>().material = volume;
-            VolDown.GetComponent<BoxCollider>().isTrigger = true;
-            VolUp.GetComponent<MeshRenderer>().material = volume;
-            VolUp.GetComponent<BoxCollider>().isTrigger = true;
-            VolDown.layer = 18;
-            VolUp.layer = 18;
-            VolDown.AddComponent<VolumeController>();
-            VolUp.AddComponent<VolumeController>();
+            if (background.Video)
+            {
+                var volume = new Material(Shader.Find("GorillaTag/UberShader"));
+                var VolUp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                VolUp.transform.position = new Vector3(-65.1123f, 12.169f, -80.0745f);
+                VolUp.transform.rotation = Quaternion.Euler(84.7581f, 200.596f, 0.2129f);
+                VolUp.transform.localScale = new Vector3(0.069f, 0.076f, 0.046f);
+                VolUp.name = "volup";
+                var VolDown = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                VolDown.transform.position = new Vector3(-65.1223f, 11.809f, -80.0945f);
+                VolDown.transform.rotation = Quaternion.Euler(84.7581f, 200.596f, 0.2129f);
+                VolDown.transform.localScale = new Vector3(0.069f, 0.076f, 0.046f);
+                VolDown.name = "voldown";
+                VolDown.GetComponent<MeshRenderer>().material = volume;
+                VolDown.GetComponent<BoxCollider>().isTrigger = true;
+                VolUp.GetComponent<MeshRenderer>().material = volume;
+                VolUp.GetComponent<BoxCollider>().isTrigger = true;
+                VolDown.layer = 18;
+                VolUp.layer = 18;
+                VolDown.AddComponent<VolumeController>();
+                VolUp.AddComponent<VolumeController>();
+            }
+          
         }
 
 
